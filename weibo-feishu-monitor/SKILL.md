@@ -31,11 +31,13 @@ Define these values for the target machine before using the command templates:
 ## Default Behavior
 
 - Monitor Weibo accounts with browser fallback when the public API is unavailable.
+- When browser fallback is used, keep scrolling to collect more posts instead of trusting only the first screen.
 - Render each Weibo into one long card image.
 - Keep the monitored user's avatar in the card.
 - Fetch full text for long posts instead of truncating at `展开全文`.
 - Strip trailing UI text like `收起`.
 - Use a more distinct quote style for retweets and show the original author as `@用户名`.
+- Re-sort browser-fetched posts by parsed publish time so older pinned or historical cards do not crowd out newer posts.
 - Dedupe formal deliveries so the same post is not re-sent to the same Feishu chat.
 - Mark manual test sends with a `TEST` badge.
 
@@ -56,6 +58,8 @@ Define these values for the target machine before using the command templates:
 - When the user wants to verify retweet rendering, prefer a historical retweet post instead of waiting for a new one.
 - When validating launchd, check both job state and the latest stdout/stderr logs.
 - When debugging missing content, verify browser fetch output before blaming rendering.
+- When a monitored account seems to be missing, compare the fetched post timestamps before assuming the account is absent from the watch list.
+- Be careful with pinned posts: page-top historical cards can appear before newer posts during browser fallback, so verify with a deeper fetch.
 
 ## Files To Know
 

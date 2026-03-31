@@ -12,6 +12,7 @@ The skill helps Codex:
 - send polished single-image Weibo cards to Feishu
 - validate specific posts or historical retweets
 - troubleshoot launchd runs, logs, dedupe state, and delivery failures
+- diagnose browser-fallback misses caused by older pinned or historical cards appearing before newer posts
 
 ## What The Skill Assumes
 

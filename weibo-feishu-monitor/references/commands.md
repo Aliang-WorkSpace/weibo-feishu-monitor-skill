@@ -60,6 +60,8 @@ for p in posts:
 PY
 ```
 
+This is the preferred sanity check when a user says a monitored account was "missed". Confirm the returned timestamps first, because browser fallback may need scrolling to expose posts beyond the first screen.
+
 ### Send one specific post to Feishu
 
 Use this pattern when the user names a timestamp or URL.
@@ -171,8 +173,10 @@ cat "${LIVE_ROOT}/runtime/lanxi_weibo_delivery_state.json"
 ## Behavior Notes
 
 - Formal monitoring sends one long image per post.
+- Browser fallback now scrolls to collect additional cards before deciding which posts are newest.
 - Long posts are expanded via detail-page fetch before rendering.
 - Trailing UI text such as `收起` is stripped during text normalization.
 - Retweet cards show the original author name in the quote header, for example `转发原文 · @原作者`.
+- Browser-fetched posts are sorted by parsed publish time so older pinned or historical cards do not displace newer posts.
 - Test sends add a `TEST` badge and do not participate in formal delivery dedupe.
 - Formal sends record delivery fingerprints in `lanxi_weibo_delivery_state.json`.
